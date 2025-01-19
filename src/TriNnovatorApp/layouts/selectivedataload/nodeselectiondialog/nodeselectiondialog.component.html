@@ -1,0 +1,11 @@
+<div class="container">
+  <TriNnovatorApp-table
+      [cols]="COLS_NODEDATA"
+      [importdata]="NODE_DATA"
+      [dataKey]="'name'"
+      (rowSelected)="selectedRows($event)"
+      [defaultRowsPerPage]="5"
+    ></TriNnovatorApp-table>
+    <p-button pRipple label="Submit" class="p-button-success" (onClick)="onSubmit($event)"></p-button>
+</div>
+  

@@ -1,0 +1,63 @@
+<div class="layout-topbar">
+  <p-confirmDialog></p-confirmDialog>
+  <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()" style="left:-16px">
+    <i class="pi pi-bars" style="color: #007df4; font-size: 25px !important;"></i>
+  </button>
+  <div class="layout-topbar-logo-container">
+    <div class="layout-topbar-logo">
+      <img [src]="imgPath + imgFileName" />
+    </div>
+  </div>
+  <!-- <div *ngFor="let item of model">
+    {{ item.label }}
+  </div> -->
+  <div>
+</div>
+
+  <button
+    #topbarmenubutton
+    class="p-link layout-topbar-menu-button layout-topbar-button"
+    (click)="layoutService.showProfileSidebar()"
+  >
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+  <div
+    #topbarmenu
+    class="layout-topbar-menu"
+    [ngClass]="{
+      'layout-topbar-menu-mobile-active':
+        layoutService.state.profileSidebarVisible
+    }"
+  >
+
+    <div class="mainthemeSwitch">
+      <input
+        type="checkbox"
+        class="checkbox"
+        id="checkbox-theme"
+        (change)="changeTheme($event)"
+      />
+      <label for="checkbox-theme" class="checkbox-label">
+        <i class="pi pi-moon"></i>
+        <i class="pi pi-sun"></i>
+        <span class="ball"></span>
+      </label>
+    </div>
+    <button class="p-link layout-topbar-button" >
+      <i class="pi pi-bell"></i>
+      <span>Notifications</span>
+    </button>
+
+    <p-menu #menu [model]="tieredItems" [popup]="true"></p-menu>
+    <button pButton class="p-link layout-topbar-button" type="button" (click)="menu.toggle($event)" icon="pi pi-user">
+    <i class = "pi pi-user"></i>
+      <span>Profile</span>
+    </button>
+
+    <button class="p-link layout-topbar-button" (click)="onLogout()">
+      <i class="pi pi-sign-out"></i>
+      <span>Logout</span>
+    </button>
+
+  </div>
+

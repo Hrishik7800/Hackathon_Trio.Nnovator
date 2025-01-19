@@ -1,0 +1,370 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    /* Light background for the body */
+    padding: 10px;
+    /* Padding around the body */
+}
+
+.accordion-icon {
+    margin-right: 8px;
+    /* Space between the icon and the title */
+    vertical-align: middle;
+    /* Align icon vertically with text */
+}
+
+.property-box {
+    display: flex; /* Use flexbox for horizontal layout */
+    align-items: center; /* Center items vertically */
+    padding: 5px; /* Add some padding */
+    //border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    //background-color: #f9f9f9; /* Light background color */
+    margin-left: 20px; /* Space between title and box */
+    font-size: 0.8rem; /* Slightly larger font size for readability */
+    color: #333; /* Darker text color for better contrast */
+  }
+  
+  .property-display {
+    display: flex; /* Use flexbox for horizontal layout */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .property-item {
+    padding: 0 10px; /* Add horizontal padding for each property */
+  }
+  
+  .separator {
+    width: 1px; /* Width of the separator line */
+    height: 20px; /* Height of the separator line */
+    background-color: #ccc; /* Color of the separator line */
+    margin: 0 5px; /* Space around the separator */
+  }
+  
+  /* Optional: Add hover effect for better UX */
+  .property-box:hover {
+    border-color: #007bff; /* Change border color on hover */
+    background-color: #e9f5ff; /* Light blue background on hover */
+  }
+
+.mat-expansion-panel-header {
+    font-size: 24px;
+    /* Change this value to your desired font size */
+}
+
+.mat-panel-title {
+    font-size: 24px;
+
+    /* Change this value to your desired font size */
+}
+
+.tab-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.tabmenu {
+    // flex-grow: ; /* Allow the tab menu to take available space */
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar for the tab menu */
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    /* Space between buttons */
+}
+
+.container {
+    background-color: #ffffff;
+    /* White background for the container */
+    border-radius: 8px;
+    /* Rounded corners */
+    padding: 10px;
+    /* Padding inside the container */
+}
+
+.title {
+    font-size: 24px;
+    /* Font size for the title */
+    font-weight: bold;
+    /* Bold text */
+    color: #333;
+    /* Dark text color */
+    margin-bottom: 20px;
+    /* Space below the title */
+}
+
+.property-grid {
+    display: grid;
+    /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr);
+    /* Three equal columns */
+    gap: 20px;
+    /* Space between grid items */
+}
+
+.property {
+    display: flex;
+    /* Use flexbox for property layout */
+    align-items: center;
+    /* Center items vertically */
+}
+
+.property-name {
+    //font-weight: bold; /* Bold text for property name */
+    color: #000000;
+    /* Darker color for property name */
+    margin-right: 5px;
+    /* Space between name and value */
+    flex: 0 0 35%;
+    /* Set width to 35% */
+}
+
+.property-value {
+    background-color: #f0f0f0;
+    /* Light gray background for input */
+    border: 1px solid #ccc;
+    /* Border for input */
+    border-radius: 4px;
+    /* Rounded corners for input */
+    padding: 5px;
+    /* Padding inside input */
+    flex: 0 0 65%;
+    /* Set width to 65% */
+    color: #333;
+    /* Darker color for input text */
+}
+
+.header {
+    display: flex;
+    /* Flexbox for alignment */
+    justify-content: space-between;
+    /* Space between title and button group */
+    align-items: center;
+    /* Center items vertically */
+    padding-bottom: 20PX;
+}
+
+.button {
+    padding: 10px 20px;
+    /* Padding for buttons */
+    border: none;
+    /* Remove default border */
+    border-radius: 4px;
+    /* Rounded corners for buttons */
+    color: white;
+    /* White text color */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.2s ease;
+    /* Smooth transition for background color */
+}
+
+/* Button color styles */
+.button.edit {
+    background-color: #007bff;
+    /* Blue background for Edit button */
+}
+
+.button.done {
+    background-color: #28a745;
+    /* Green background for Done button */
+}
+
+/* Button hover effects */
+.button.edit:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+.button.done:hover {
+    background-color: #218838;
+    /* Darker green on hover */
+}
+
+/* Optional: Style for when the button is disabled */
+.button:disabled {
+    background-color: #ccc;
+    /* Gray background for disabled button */
+    cursor: not-allowed;
+    /* Not allowed cursor */
+}
+
+.button.discard {
+    background-color: #6c757d;
+    /* Gray background for Discard button */
+}
+
+.button.delete {
+    background-color: #dc3545;
+    /* Red background for Delete button */
+}
+
+.button.relationship {
+    background-color: #1d2275;
+}
+
+/* Button hover effects */
+.button:hover {
+    opacity: 0.9;
+    /* Slightly fade button on hover */
+}
+
+.button.discard:hover {
+    background-color: #5a6268;
+    /* Darker gray on hover */
+}
+
+.button.delete:hover {
+    background-color: #c82333;
+    /* Darker red on hover */
+}
+
+.button.relationship:hover {
+    background-color: #1d2064;
+}
+
+// Lifecycle 
+.lifecycle-container {
+    display: flex;
+    /* Use flexbox for horizontal layout */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: space-between;
+    /* Space between stages */
+    max-width: 100%;
+    /* Set a max width for the container */
+    margin: 20px auto;
+    /* Center the container */
+    padding: 20px;
+    /* Padding around the container */
+    background-color: #f9f9f9;
+    /* Light background color */
+}
+
+.lifecycle-title {
+    text-align: center;
+    /* Center the title */
+    margin-bottom: 20px;
+    /* Space below the title */
+}
+
+.lifecycle-stage {
+    display: flex;
+    /* Use flexbox for layout */
+    flex-direction: column;
+    /* Stack indicator and details vertically */
+    align-items: center;
+    /* Center items horizontally */
+    position: relative;
+    /* Position relative for absolute positioning of description */
+}
+
+.stage-indicator {
+    width: 40px;
+    /* Fixed width for the indicator */
+    height: 40px;
+    /* Fixed height for the indicator */
+    border-radius: 50%;
+    /* Make it circular */
+    display: flex;
+    /* Use flexbox for centering */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
+    color: white;
+    /* White text color */
+    font-weight: bold;
+    /* Bold text */
+    margin-bottom: 5px;
+    /* Space below the indicator */
+}
+
+.line {
+    width: 100%;
+    /* Full width for the line */
+    height: 4px;
+    /* Height of the line */
+    background-color: #ccc;
+    /* Color of the line */
+    position: absolute;
+    /* Position absolute for the line */
+    top: 20px;
+    /* Position the line above the indicators */
+    left: 50%;
+    /* Center the line */
+    transform: translateX(-50%);
+    /* Adjust for centering */
+    z-index: -1;
+    /* Send the line behind the indicators */
+}
+
+.created {
+    background-color: #007bff;
+    /* Blue for Created */
+}
+
+.in-production {
+    background-color: #ffc107;
+    /* Yellow for In Production */
+}
+
+.quality-check {
+    background-color: #28a745;
+    /* Green for Quality Check */
+}
+
+.completed {
+    background-color: #17a2b8;
+    /* Teal for Completed */
+}
+
+.archived {
+    background-color: #6c757d;
+    /* Gray for Archived */
+}
+
+.stage-details {
+    text-align: center;
+    /* Center text in details */
+}
+
+.description {
+    display: none;
+    /* Hide description by default */
+    position: absolute;
+    /* Position absolutely */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Adjust for centering */
+    background-color: #fff;
+    /* White background for description */
+    border: 1px solid #ccc;
+    /* Border around description */
+    border-radius: 4px;
+    /* Rounded corners */
+    padding: 5px;
+    /* Padding around description */
+    z-index: 10;
+    /* Ensure it appears above other elements */
+}
+
+.lifecycle-stage:hover .description {
+    display: block;
+    /* Show description on hover */
+}
+
+.stage-details h3 {
+    margin: 0;
+    /* Remove default margin */
+}
+
+.stage-details p {
+    margin: 5px 0 0;
+    /* Space above the paragraph */
+}

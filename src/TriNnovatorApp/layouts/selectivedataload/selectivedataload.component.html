@@ -1,0 +1,44 @@
+<div class="container">
+  <p-toast key="tst"></p-toast>
+  <p-dropdown
+    [options]="tableOptions"
+    (onChange)="loadDataBasedOnSelection($event)"
+    placeholder="Select a Table"
+  ></p-dropdown>
+  <button
+    pButton
+    pRipple
+    label="Add"
+    class="p-button-success"
+    style="margin-left: 900px"
+    (click)="addToSecondTable()"
+  ></button>
+  <TriNnovatorApp-table
+    [cols]="COLS_SELECTIVEDATA"
+    [importdata]="DATA_CONFIG_DATA"
+    (rowSelected)="selectedRows($event)"
+    [dataKey]="'basId'"
+    [defaultRowsPerPage]="10"
+  ></TriNnovatorApp-table>
+</div>
+<div>
+  <TriNnovatorApp-table
+    [cols]="COLS_SELECTIVEDATATABLE"
+    [importdata]="DATA_SECOND_DATA"
+    [defaultRowsPerPage]="10"
+    (rowSelected)="selectedRowsSecondTable($event)"
+    [dataKey]="'basId'"
+  >
+  </TriNnovatorApp-table>
+</div>
+
+<p-button
+  (click)="showNodeSelectionDialog()"
+  label="Load"
+  size="small"
+  [style]="{ 'margin-right': '10px' }"
+  severity="info"
+></p-button>
+
+
+<p-button label="Delete" size="small" severity="danger"  (onClick)="removeDataFromSecondTable()"></p-button>

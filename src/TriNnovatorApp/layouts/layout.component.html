@@ -1,0 +1,14 @@
+
+<div class="layout-wrapper" [ngClass]="containerClass">
+  <TriNnovatorApp-topbar ></TriNnovatorApp-topbar>
+  <div class="layout-sidebar" >
+    <TriNnovatorApp-sidebar></TriNnovatorApp-sidebar>
+  </div>
+  <div class="layout-main-container">
+    <div class="layout-main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <TriNnovatorApp-footer class="layout-footer" ></TriNnovatorApp-footer>
+  <div class="layout-mask"></div>
+</div>

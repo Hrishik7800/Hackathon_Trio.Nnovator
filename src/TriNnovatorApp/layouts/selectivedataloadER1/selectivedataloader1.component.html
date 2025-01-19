@@ -1,0 +1,28 @@
+<div class="container">
+  <!-- <p-toast key="tst"></p-toast> -->
+  <p-tag severity="info" [value]="tagValue" />
+  <div>
+    <p-menubar [model]="confgurationMenu" styleClass="menuBar"> </p-menubar>
+  </div>
+</div>
+<div>
+  <TriNnovatorApp-table
+    [cols]="ARAS_COLS_ITEMTYPE"
+    [importdata]="DATA_SECOND_DATA"
+    [defaultRowsPerPage]="25"
+    (rowSelected)="selectedRowsSecondTable($event)"
+    [dataKey]="'basId'"
+    
+  >
+  </TriNnovatorApp-table>
+</div>
+
+<!-- <p-button
+  (click)="showNodeSelectionDialog()"
+  label="Load"
+  size="small"
+  [style]="{ 'margin-right': '10px' }"
+  severity="info"
+></p-button> -->
+
+<!-- <p-button label="Delete" size="small" severity="danger"  (onClick)="removeDataFromSecondTable()"></p-button> -->

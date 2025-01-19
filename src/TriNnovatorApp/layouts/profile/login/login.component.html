@@ -1,0 +1,51 @@
+
+ <div class="hide-scrollbar">
+
+ </div>
+ <div class="login-container">
+   <div >
+   <div class="logo-icon-container">
+       <span class="image-icon"></span>
+     </div>
+  </div>
+  <form (ngSubmit)="onSubmit()">
+   <div *ngIf="submitted && !userName && !password " class="error-message">
+     Please enter correct UserName and Password
+   </div>
+ 
+   <div class="error-container" *ngIf="errorMessage">
+     <div class="error-message">
+       {{ errorMessage }}
+       <button type="button" class="close-error-message" (click)="closeErrorMessage()">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+   </div>
+ 
+   <div class="form-group">
+     <label for="username">User Name</label>
+     <input type="text" id="userName" name="userName" [(ngModel)]="userName" placeholder="Enter User Name" required>
+   </div>
+ 
+   <div class="form-group">
+     <label for="password">Password</label>
+     <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+   </div>
+ 
+   <!-- <div class="form-group">
+     <label for="iteration">Iteration</label>
+     <p-dropdown name="iteration" [options]="iterationOptions" optionLabel="name" [(ngModel)]="selectedIteration" [style]="{ 'width': '350px' }"></p-dropdown>
+   </div> -->
+ 
+   <div *ngIf="selectedIteration && selectedIteration.name === 'New'" class="form-group">
+     <input type="text" id="dynamicInput" placeholder="Enter new Iteration name">
+   </div>
+ 
+   <button type="submit" style="margin-top: 30px;">Login</button>
+ </form>
+ </div>
+ <div class="layout-footer">
+   <div>
+     <span>Copyright © 2024 <a href="https://www.steepgraph.com">SteepGraph Systems Pvt. Ltd.</a> All rights reserved.</span>
+   </div>
+ </div>

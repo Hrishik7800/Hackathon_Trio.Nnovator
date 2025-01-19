@@ -1,0 +1,85 @@
+<mat-accordion>
+  <mat-expansion-panel [expanded]="true"> <!-- Main Accordion -->
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ data['keyed_name'] }}
+      </mat-panel-title>
+      <mat-panel-description>
+        <div class="property-box">
+          <div class="property-display">
+            <span class="property-item">Created By: {{ data['Created By'] }}</span>
+            <span class="separator"></span>
+            <span class="property-item">Modified By: {{ data['Modified By'] }}</span>
+            <span class="separator"></span>
+            <span class="property-item">Created On: {{ data['Created On'] }}</span>
+            <span class="separator"></span>
+            <span class="property-item">Modified On: {{ data['Modified On'] }}</span>
+            <span class="separator"></span>
+            <span class="property-item">State: {{ data['State'] }}</span>
+          </div>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="tab-container">
+      <p-tabMenu [model]="tabs" [activeItem]="activeTab" (activeItemChange)="onTabChange($event)" class="tabmenu">
+      </p-tabMenu>
+      <div class="button-group">
+        <button id="editBtn" (click)="toggleEditMode()" [ngClass]="isEditMode ? 'button done' : 'button edit'">
+          {{ isEditMode ? 'Done' : 'Edit' }}
+        </button>
+        <button id="discardBtn" (click)="onDiscard()" class="button discard">Discard</button>
+        <button id="deleteBtn" (click)="onDelete()" class="button delete">Delete</button>
+        <button id="relationshipBtn" (click)="onRelationship()" class="button relationship">Relationship</button>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab?.label === 'Form'">
+      <div class="container">
+        <div class="property-grid">
+          <div class="property" *ngFor="let property of properties">
+            <span class="property-name">{{ property.name }}:</span>
+            <input type="text" class="property-value" [(ngModel)]="property.value"
+              [ngStyle]="{'background-color': isEditMode ? '#ffffff' : '#f0f0f0'}" [readonly]="!isEditMode" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab?.label === 'History'">
+      <div>
+        <p>History content goes here.</p>
+        <!-- Add your history content here -->
+      </div>
+    </div>
+
+
+    <div *ngIf="activeTab?.label === 'Workflow'">
+      <p>Workflow content goes here.</p>
+      <!-- Add your workflow content here -->
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+<div class="card">
+  <div class="lifecycle-visualization">
+    <svg checkname='lifeCycleState' xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 1000 1000"
+      preserveAspectRatio="xMidYMid meet" width="800" height="600">
+      <!-- Your SVG elements here -->
+    </svg>
+  </div>
+  <div class="lifecycle-container">
+    <div class="lifecycle-stage" *ngFor="let stage of lifecycleStages; let i = index">
+      <div class="stage-indicator" [ngClass]="stage.class">
+        <span *ngIf="stage.completed">&#10003;</span> <!-- Green tick for completed state -->
+        <span *ngIf="!stage.completed">{{ i + 1 }}</span> <!-- Stage number -->
+      </div>
+      <div class="stage-details">
+        <h3>{{ stage.title }}</h3>
+        <p class="description">{{ stage.description }}</p>
+      </div>
+      <div *ngIf="i < lifecycleStages.length - 1" class="line"></div> <!-- Line between stages -->
+    </div>
+  </div>
+</div>
+
+<!-- End -->

@@ -1,0 +1,99 @@
+<p-table
+  #dt1
+  styleClass="p-datatable-sm p-datatable-striped p-datatable-gridlines"
+  [columns]="cols"
+  [value]="importdata"
+  [dataKey]="dataKey"
+  [rows]="defaultRowsPerPage"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100, 150, 200]"
+  [loading]="loading"
+  [paginator]="true"
+  selectionMode="multiple"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [showCurrentPageReport]="true"
+  [globalFilterFields]="fieldList"
+  [(selection)]="selectedRows"
+  [resizableColumns]="true"
+  (selectionChange)="onSelectionChange($event)"
+  [scrollable]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          [(ngModel)]="searchTerm"
+          type="search"
+          (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search"
+        />
+      </span>
+      <button
+        pButton
+        label="Clear"
+        class="p-button-outlined ml-auto"
+        icon="pi pi-filter-slash"
+        (click)="clear(dt1)"
+      ></button>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th>
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th *ngFor="let col of columns; let i=index" pResizableColumn pSortableColumn="{{col.field}}" draggable="true" (dragstart)="onDragStart($event,i)" (dragover)="onDragOver($event)" (drop)="onDrop($event,i)">
+        <div class="flex align-items-center">
+          {{ col.header }}
+          <p-columnFilter
+            type="text"
+            [field]="col.field"
+            display="menu"
+          ></p-columnFilter>
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+          
+        </div>
+      </th>
+      <th *ngIf="showExtractStructure">
+        Extract Structure
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-importdata let-columns="columns">
+    <tr (dblclick)="onRowDoubleClick(importdata)">
+      <td>
+        <p-tableCheckbox [value]="importdata"></p-tableCheckbox>
+      </td>
+
+      <td *ngFor="let col of columns" [ngStyle]="getCellStyle(importdata[col.field])">
+        <ng-container *ngIf="col.field === 'view'; else defaultCell">
+          <a [href]="importdata['url']" target="_blank">Link</a>
+        </ng-container>
+        <ng-template #defaultCell>
+          {{ importdata[col.field] }}
+        </ng-template>
+      </td>
+      <td *ngIf="showExtractStructure"> <!-- Conditionally render Extract Structure -->
+        <p-checkbox
+          [(ngModel)]="importdata.extractstructure"
+          binary="true"
+        ></p-checkbox>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No Data found.</td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col *ngFor="let col of columns" [style.width]="col.width" />
+    </colgroup>
+  </ng-template>
+</p-table>

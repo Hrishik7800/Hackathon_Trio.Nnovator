@@ -1,0 +1,34 @@
+<div class="layout-wrapper" [ngClass]="containerClass">
+  <TriNnovatorApp-topbar></TriNnovatorApp-topbar>
+  <div class="layout-sidebar">
+    <TriNnovatorApp-sidebar></TriNnovatorApp-sidebar>
+  </div>
+  <div class="layout-main-container">
+    <div class="layout-main">
+      <router-outlet></router-outlet>
+      <!-- Card for Iteration -->
+      <div class="card">
+        <div class="card-header">
+          <span>Iteration: {{ iteration }}</span>
+        </div>
+      </div>
+      <!-- Card for Table -->
+      <div class="card">
+        <div class="card-header">
+        <p-button label="Copy Iteration" severity="info" (onClick)="addCopyIteration()" >
+            <i class="pi pi-clone"></i>
+          </p-button>
+        </div>
+        <div class="card-body" style="margin-bottom: 20px;">
+        </div>
+        <TriNnovatorApp-table
+        [cols]="COLS_ITERATIONTABLE"
+        [importdata]="DATA_ITERATION_DATA"
+        [defaultRowsPerPage]="10"
+      ></TriNnovatorApp-table>
+      </div>
+    </div>
+  </div>
+  <TriNnovatorApp-footer class="layout-footer"></TriNnovatorApp-footer>
+  <div class="layout-mask"></div>
+</div>
